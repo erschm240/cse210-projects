@@ -1,9 +1,13 @@
 using System;
+using System.Globalization;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Sandbox World!");
+        string randomWords = "hello sandbox world!";
+        TextInfo textinfo = CultureInfo.CurrentCulture.TextInfo;
+        string capitalized = textinfo.ToTitleCase(randomWords);
+        Console.WriteLine(capitalized);
     }
 }
