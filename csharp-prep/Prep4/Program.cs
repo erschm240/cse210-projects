@@ -25,7 +25,12 @@ class Program
 
         // Compute the average of the list
         double totalNums = numbers.Count;
-        double average = totalSum / (totalNums - 1);
+        double average = 0;
+        if (totalNums - 1 != 0)
+        {
+            average = totalSum / (totalNums - 1);
+        }
+        
         Console.WriteLine($"The average is: {average}");
 
         // Find the largest number in the list
