@@ -5,9 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        string randomWords = "hello sandbox world!";
-        TextInfo textinfo = CultureInfo.CurrentCulture.TextInfo;
-        string capitalized = textinfo.ToTitleCase(randomWords);
-        Console.WriteLine(capitalized);
+        Costume myCostume = new Costume();
+        myCostume.outfit = "Wetsuit";
+        myCostume.size = "Small";
+        myCostume.footwear = "Flippers";
+        myCostume.tools = "Goggles, snorkel, camera";
+        myCostume.Display();
     }
 }
