@@ -7,16 +7,29 @@ class Entry
         "How did I see the hand of the Lord in my life today?",
         "What was the strongest emotion I felt today?",
         "If I had one thing I could do over today, what would it be?" };
-    public List<string> _entries = new List<string>();
+    public string _text = "";
     public string _date = "10-6-2025";
+
+    public string _prompt = "";
     // Behaviors
     public void ChoosePrompt()
     {
-        Console.WriteLine($"{_prompts[1]}");
-        Console.Write(">> ");
-        string userEntry = Console.ReadLine();
+        Random rand = new Random();
+        int index = rand.Next(_prompts.Count);
+        _prompt = _prompts[index];
+        Console.WriteLine($"{_prompt}");
+    }
 
-        // newEntry._entries.Add(userEntry);
-        // Console.WriteLine(_entries);
+    public void PromptAnswer()
+    {
+        Console.Write(">> ");
+        _text = Console.ReadLine();
+        _date = DateTime.Now.ToShortDateString();
+    }
+
+    public string DisplayEntry()
+    {
+        return string.Format("{0} {1}: {2}", _date, _prompt, _text);
+        
     }
 }

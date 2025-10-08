@@ -1,7 +1,10 @@
+using System.Security.Cryptography.X509Certificates;
+
 class StartMenu
 {
     // Attributes
     public List<string> _selections = new List<string>() { "1. Write", "2. Display", "3. Load", "4. Save", "5. Quit" };
+    public List<Entry> _entries = new List<Entry>();
 
     // Behaviors
     public void Display()
@@ -25,10 +28,16 @@ class StartMenu
             {
                 Entry newEntry = new Entry();
                 newEntry.ChoosePrompt();
+                newEntry.PromptAnswer();
+                _entries.Add(newEntry);
             }
             else if (userInput == "2")
             {
-                // Display the user's entries
+                foreach (Entry entry in _entries)
+                {
+                    Console.WriteLine(entry.DisplayEntry());
+                }
+
             }
             else if (userInput == "3")
             {
