@@ -3,12 +3,14 @@ using System.Security.Cryptography.X509Certificates;
 class StartMenu
 {
     // Attributes
-    public List<string> _selections = new List<string>() { "1. Write", "2. Display", "3. Load", "4. Save", "5. Quit" };
-    public List<Entry> _entries = new List<Entry>();
+    public List<string> _selections = new List<string>() { "1. Write", "2. Display", "3. Save", "4. Load", "5. Quit" };
+
+    // public string _filename = "";
 
     // Behaviors
     public void Display()
     {
+        Journal myJournal = new Journal();
         Console.WriteLine("Welcome to the Journal Program!");
         Console.WriteLine("Please choose an action:");
 
@@ -26,14 +28,13 @@ class StartMenu
 
             if (userInput == "1")
             {
-                Entry newEntry = new Entry();
-                newEntry.ChoosePrompt();
+                Entry newEntry = new Entry(myJournal.ChoosePrompt());
                 newEntry.PromptAnswer();
-                _entries.Add(newEntry);
+                myJournal._entries.Add(newEntry);
             }
             else if (userInput == "2")
             {
-                foreach (Entry entry in _entries)
+                foreach (Entry entry in myJournal._entries)
                 {
                     Console.WriteLine(entry.DisplayEntry());
                 }
@@ -41,11 +42,13 @@ class StartMenu
             }
             else if (userInput == "3")
             {
-                // Load the user's entry(ies) from a journal file
+                myJournal.WriteToFile();
             }
             else if (userInput == "4")
             {
-                // Save the user's entry(ies) to a file
+                Console.WriteLine("What is the filename? ");
+                string filename = Console.ReadLine();
+                myJournal.ReadFromFile(filename);
             }
             else if (userInput == "5")
             {
