@@ -5,8 +5,6 @@ class StartMenu
     // Attributes
     public List<string> _selections = new List<string>() { "1. Write", "2. Display", "3. Save", "4. Load", "5. Quit" };
 
-    // public string _filename = "";
-
     // Behaviors
     public void Display()
     {
