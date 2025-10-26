@@ -29,15 +29,15 @@ class Word
             return " " + _hiddenWord;
         }
     }
-    public void Hide() // setter
+    public void Hide() // Set shown state of word to hide it
     {
         _shown = false;
     }
-    public bool IsShown() // getter
+    public bool IsShown() // Get the state of the word
     {
         return _shown;
     }
-    private void CreateHiddenWord()
+    private void CreateHiddenWord() // Create the underscore version of the word, leaving any non-letter characters alone
     {
         _hiddenWord = Regex.Replace(_word, "[a-zA-Z]", "_");
     }

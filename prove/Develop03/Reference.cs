@@ -8,14 +8,14 @@ class Reference
     private string _fullReference;
 
     //Constructors
-    public Reference()
+    public Reference() // Create a reference without any specific values
     {
         _book = "";
         _chapter = 0;
         _verse = 0;
         _verseEnd = 0;
     }
-    public Reference(string b, int c, int v)
+    public Reference(string b, int c, int v) // Create a single verse reference
     {
         _book = b;
         _chapter = c;
@@ -23,7 +23,7 @@ class Reference
         BuildSingleReference();
     }
 
-    public Reference(string b, int c, int v, int e)
+    public Reference(string b, int c, int v, int e) // Create a multi-verse reference
     {
         _book = b;
         _chapter = c;
@@ -33,11 +33,11 @@ class Reference
     }
 
     //Behaviors
-    private void BuildSingleReference()
+    private void BuildSingleReference() // Build the string for the single verse reference
     {
         _fullReference = $"{_book} {_chapter}:{_verse}";
     }
-    private void BuildMultiReference()
+    private void BuildMultiReference() // Build the string for the multi-verse reference
     {
         _fullReference = $"{_book} {_chapter}:{_verse}-{_verseEnd}";
     }

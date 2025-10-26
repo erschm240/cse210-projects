@@ -5,23 +5,26 @@ class Scripture
     private List<Word> _words = new List<Word>();
     
     // Constructors
-    public Scripture()
+    public Scripture() // Build a scripture without a specific value
     {
         _scripture = "";
     }
-    public Scripture(string s)
+    public Scripture(string s) // Build the string for the scripture text
     {
         _scripture = s;
         ParseText();
     }
 
     // Behaviors
-    public void HideWords()
+    public void HideWords() // Hide words
     {
+        // Only hide three words
         for (int i = 0; i < 3; i++)
         {
+            // Select a random index of a word
             Random randomWord = new Random();
             int index = randomWord.Next(_words.Count);
+            // Variable to allow the program to enter the loop
             bool continueWhile = true;
 
             while (continueWhile)
@@ -46,14 +49,14 @@ class Scripture
                     continueWhile = !IsCompletelyHidden();
                 }
             }
-
+            // If all words are hidden, leave loop
             if (IsCompletelyHidden())
             {
                 break;
             }
         }
     }
-    public string Display()
+    public string Display() // Build the scripture string that is displayed to the screen at start and at every reload
     {
         string scripture = "";
 
@@ -64,7 +67,7 @@ class Scripture
 
         return scripture;
     }
-    private void ParseText()
+    private void ParseText() // Create the list that will contain each word individually for the hide method
     {
         List<string> words = _scripture.Split(" ").ToList<string>();
         foreach (string word in words)
@@ -73,7 +76,7 @@ class Scripture
             _words.Add(newWord);
         }
     } 
-    public bool IsCompletelyHidden()
+    public bool IsCompletelyHidden() // Check if each word is hidden or shown, only return true when all are hidden
     {
         foreach (Word word in _words)
         {
