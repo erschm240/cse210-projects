@@ -8,6 +8,13 @@ class Reference
     private string _fullReference;
 
     //Constructors
+    public Reference()
+    {
+        _book = "";
+        _chapter = 0;
+        _verse = 0;
+        _verseEnd = 0;
+    }
     public Reference(string b, int c, int v)
     {
         _book = b;

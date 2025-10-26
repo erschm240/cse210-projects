@@ -3,7 +3,12 @@ class Scripture
     // Attributes
     private string _scripture;
     private List<Word> _words = new List<Word>();
+    
     // Constructors
+    public Scripture()
+    {
+        _scripture = "";
+    }
     public Scripture(string s)
     {
         _scripture = s;

@@ -4,9 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Create the scripture text and reference objects
-        Scripture singleScripture = new Scripture("For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
-        Reference singleReference = new Reference("John", 3, 16);
+        Console.Write("Would you like to do Isaiah 12:2 (type 'I') or Doctrine and Covenants (type 'D') 18:10-11? ");
+        string choice = Console.ReadLine().ToUpper();
+
+        Scripture newScripture = new Scripture();
+        Reference newReference = new Reference();
+
+        if (choice == "I")
+        {
+            // Create the single verse scripture text and reference objects
+            newScripture = new Scripture("\nBehold, God is my salvation; I will trust, and not be afraid: for the Lord JEHOVAH is my strength and my song; he also is become my salvation.");
+            newReference = new Reference("Isaiah", 12, 2);
+        }
+        else if (choice == "D")
+        {
+            // Create the multi-verse scripture text and reference objects
+            newScripture = new Scripture("\nRemember the worth of souls is great in the sight of God;\nFor, behold, the Lord your Redeemer suffered death in the flesh; wherefore he suffered the pain of all men, that all men might repent and come unto him.");
+            newReference = new Reference("Doctrine and Covenants", 18, 10, 11);
+        }
 
         bool doQuit = false;
 
@@ -15,10 +30,10 @@ class Program
             Console.Clear();
 
             // Display the scripture and reference
-            Console.Write(singleReference.Display());
-            Console.WriteLine(singleScripture.Display());
+            Console.Write(newReference.Display());
+            Console.WriteLine(newScripture.Display());
 
-            if (singleScripture.IsCompletelyHidden())
+            if (newScripture.IsCompletelyHidden())
             {
                 break;
             }
@@ -33,7 +48,7 @@ class Program
             }
             else
             {
-                singleScripture.HideWords();
+                newScripture.HideWords();
             }
         }
     }
