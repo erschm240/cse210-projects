@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // To exceed requirements, I have preserved the punctuation when words are hidden, only hide words that aren't already hidden, and I have printed the hidden underscores to match the length of the word it's replacing.
+        // To exceed requirements, I have preserved the punctuation when words are hidden, I'm only hiding words that aren't already hidden, and I have printed the hidden underscores to match the length of the word it's replacing.
 
         // Ask the user which scripture they would like to memorize
         Console.Write("Would you like to do Isaiah 12:2 (type 'I') or Doctrine and Covenants 18:10-11 (type 'D')? ");
