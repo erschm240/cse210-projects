@@ -3,8 +3,6 @@ using System.Diagnostics;
 class Listing : Activity
 {
     // Attributes
-    // private int _amountListingPerformed;
-
     List<string> _prompts = new List<string>()
     {
         "Who are people that you appreciate?",

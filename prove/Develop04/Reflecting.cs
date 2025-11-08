@@ -1,8 +1,6 @@
 class Reflecting : Activity
 {
-    //Attributes
-    // private int _amountReflectingPerformed;
-
+    // Attributes
     List<string> _prompts = new List<string>()
     {
         "Think of a time when you stood up for someone else.",

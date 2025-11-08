@@ -1,8 +1,5 @@
 class Breathing : Activity
 {
-    // Attributes
-    // private int _amountBreathingPerformed;
-
     // Constructor
     public Breathing() : base(
         "Breathing",
