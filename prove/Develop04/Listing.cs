@@ -35,8 +35,8 @@ class Listing : Activity
 
         Console.WriteLine("List as many responses as you can to the following prompt:");
         Console.WriteLine($"--- {prompt} ---");
-        Console.Write("You may begin in: ");
-        CountDown(5);
+        Console.Write("You may begin this experience in: ");
+        CountDown(9);
         
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_duration);

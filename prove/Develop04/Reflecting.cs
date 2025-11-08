@@ -55,7 +55,7 @@ class Reflecting : Activity
         Console.WriteLine("Now ponder on each of the following questions as the relate to this experience.");
         Console.WriteLine();
         Console.Write("You may begin this experience in: ");
-        CountDown(5);
+        CountDown(9);
         Console.WriteLine();
         Console.Clear();
 
