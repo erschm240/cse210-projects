@@ -7,6 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        // To exceed requirements, I have kept a log of how many times each activity was completed as well as the total amount. This data is displayed after the user ends their session.
         Breathing breathingActivity = new Breathing();
         Reflecting reflectingActivity = new Reflecting();
         Listing listingActivity = new Listing();
