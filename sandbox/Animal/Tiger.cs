@@ -1,4 +1,4 @@
-class Tiger
+class Tiger : Mammal
 {
     public Tiger(string name) : base(name)
     {

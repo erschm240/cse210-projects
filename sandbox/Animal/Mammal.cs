@@ -9,10 +9,13 @@ class Mammal
     {
         _name = name;
     }
-
     // Behaviors
     public virtual void MakeNoise(string name)
     {
         Console.WriteLine($"{_name} makes no sound.");
+    }
+    public override string ToString()
+    {
+        return $"{this.GetType()} named {_name}";
     }
 }
