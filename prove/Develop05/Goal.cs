@@ -4,6 +4,7 @@ class Goal
     protected string _name;
     protected string _description;
     protected int _points;
+    protected bool _completed;
     protected string _displayString;
 
     // Constructor
@@ -12,12 +13,7 @@ class Goal
         _name = "";
         _description = "";
         _points = 0;
-    }
-    public Goal(string name, string desc, int points)
-    {
-        _name = name;
-        _description = desc;
-        _points = points;
+        _completed = false;
     }
 
     // Behaviors
@@ -30,15 +26,15 @@ class Goal
         Console.Write("How many points is this goal worth? ");
         _points = int.Parse(Console.ReadLine());
     }
-    public virtual string DisplayFormat()
+
+    public virtual void SetDisplayString()
     {
         _displayString = $"[ ] {_name} ({_description})";
-        return _displayString;
     }
 
     public virtual string GetStringRepresentation()
     {
-        return $"{this.GetType()}|{_name}|{_description}|{_points}";
+        return $"{this.GetType()}|{_name}|{_description}|{_points}|{_completed}";
     }
 
     public string GetDisplayString()
@@ -51,30 +47,31 @@ class Goal
         return _name;
     }
 
-    public int GetPoints()
+    public virtual int GetPoints()
     {
         return _points;
     }
 
-    public virtual void SetPoints(int points)
+    public virtual bool GetState()
     {
-        _points = points;
+        return _completed;
     }
 
     public virtual string CompleteGoal()
     {
         _displayString = $"[X] {_name} ({_description})";
         return _displayString;
-        
     }
 
-    public virtual void ReadGoal()
+    public virtual void ReadGoal(string line)
     {
-        
-    }
-
-    public virtual void WriteGoal()
-    {
-        
+        string[] columns = line.Split('|');
+        if (columns.Length == 5)
+        {
+            _name = columns[1];
+            _description = columns[2];
+            _points = int.Parse(columns[3]);
+            _completed = bool.Parse(columns[4]);
+        }
     }
 }

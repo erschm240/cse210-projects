@@ -11,12 +11,7 @@ class Checklist : Goal
         _completionTracker = 0;
         _completionTotal = 0;
         _bonusPoints = 0;
-    }
-    public Checklist(string name, string desc, int points, int total, int bonus) : base(name, desc, points)
-    {
-        _completionTracker = 0;
-        _completionTotal = total;
-        _bonusPoints = bonus;
+        _completed = false;
     }
 
     // Behaviors
@@ -27,31 +22,53 @@ class Checklist : Goal
         _completionTotal = int.Parse(Console.ReadLine());
         Console.Write("How many bonus points is it worth to do this that amount of times? ");
         _bonusPoints = int.Parse(Console.ReadLine());
-
     }
 
     public override string GetStringRepresentation()
     {
-        return $"{this.GetType()}|{_name}|{_description}|{_points}|{_completionTracker}|{_completionTotal}";
+        return $"{this.GetType()}|{_name}|{_description}|{_points}|{_completed}|{_bonusPoints}|{_completionTracker}|{_completionTotal}";
     }
 
-    public override string DisplayFormat()
+    public override void SetDisplayString()
     {
-        string _displayString = $"[ ] {_name} ({_description}) -- Currently Completed: {_completionTracker}/{_completionTotal}";
-        return _displayString;
+        string completedString = " ";
+        if (_completionTracker == _completionTotal)
+        {
+            completedString = "X";
+            _completed = true;
+        }
+        _displayString = $"[{completedString}] {_name} ({_description}) -- Currently Completed: {_completionTracker}/{_completionTotal}";
+    }
+
+    public override int GetPoints()
+    {
+        int fullPoints = _points * _completionTracker;
+        if (_completionTracker == _completionTotal)
+        {
+            fullPoints += _bonusPoints;
+        }
+        return fullPoints;
     }
 
     public override string CompleteGoal()
     {
-        if (_completionTracker == _completionTotal)
+        if (_completionTracker != _completionTotal)
         {
-        _displayString = $"[X] {_name} ({_description}) -- Currently Completed: {_completionTracker}/{_completionTotal}";
+            _completionTracker++;
         }
-        else
+        SetDisplayString();
+        return GetDisplayString();
+    }
+
+    public override void ReadGoal(string line)
+    {
+        string[] columns = line.Split('|');
+        if (columns.Length == 8)
         {
-            _completionTracker += 1;
-            _displayString = $"[ ] {_name} ({_description}) -- Currently Completed: {_completionTracker}/{_completionTotal}";
+            base.ReadGoal($"{columns[0]}|{columns[1]}|{columns[2]}|{columns[3]}|{columns[4]}");
+            _bonusPoints = int.Parse(columns[5]);
+            _completionTracker = int.Parse(columns[6]);
+            _completionTotal = int.Parse(columns[7]);
         }
-        return _displayString;
     }
 }

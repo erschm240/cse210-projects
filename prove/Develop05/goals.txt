@@ -1,0 +1,5 @@
+25
+Simple|Give a talk|Speak in Sacrament meeting when asked|100|False
+Eternal|Study the scriptures|Study for at least ten minutes|50|False|0
+Checklist|Attend the temple|Attend and perform any ordinance|50|False|500|0|3
+Simple|Bake cookies|Bake cookies to give to friends|25|True

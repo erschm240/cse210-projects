@@ -1,14 +1,9 @@
 class Simple : Goal
 {
     // Attributes
-    private bool _completed;
 
     // Constructor
     public Simple() : base()
-    {
-        _completed = false;
-    }
-    public Simple(string name, string desc, int points) : base(name, desc, points)
     {
         _completed = false;
     }
@@ -18,26 +13,33 @@ class Simple : Goal
     {
         base.Setup();
     }
-    public bool GetState()
+
+    public override void SetDisplayString()
     {
-        return _completed;
+        string completedString = " ";
+        if (_completed)
+        {
+            completedString = "X";
+        }
+        _displayString = $"[{completedString}] {_name} ({_description})";
     }
 
-    public override string GetStringRepresentation()
+    public override int GetPoints()
     {
-        return $"{this.GetType()}|{_name}|{_description}|{_points}|{_completed}";
-    }
-
-    public override string DisplayFormat()
-    {
-        _displayString = $"[ ] {_name} ({_description})";
-        return _displayString;
+        if (_completed)
+        {
+            return _points;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public override string CompleteGoal()
     {
         _completed = true;
-        _displayString = $"[X] {_name} ({_description})";
-        return _displayString;
+        SetDisplayString();
+        return GetDisplayString();
     }
 }
