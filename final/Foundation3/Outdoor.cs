@@ -8,7 +8,6 @@ class Outdoor : Event
     {
         _weather = weather;
     }
-
     public override string FullMessage()
     {
         return $"{this.GetType()} Event\n{_standardMessage}\nThe weather is forecasted to be {_weather}.";

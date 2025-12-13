@@ -6,7 +6,7 @@ class Address
     private string _streetAddress;
     private string _city;
     private string _state;
-    protected string _addressString;
+    private string _addressString;
 
     //Behaviors
     public Address(string street, string city, string state)

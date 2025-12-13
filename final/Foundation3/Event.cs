@@ -5,8 +5,8 @@ class Event
     private string _description;
     private string _date;
     private string _time;
+    private string _address;
     protected string _standardMessage;
-    protected string _address;
 
     // Behaviors
     public Event(string title, string desc, string date, string time, Address address)
@@ -29,12 +29,10 @@ class Event
     {
         return $"{this.GetType()} Event\n{_title}\n{_date}";
     }
-
     public virtual string FullMessage()
     {
         return "";
     }
-
     public void DisplayEvents(Event currentEvent)
     {
         currentEvent.SetStandardMessage();

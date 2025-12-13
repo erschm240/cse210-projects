@@ -18,7 +18,6 @@ class Video
     {
         return $"{_title} by {_author}\nDuration: {_length * 60} seconds";
     }
-
     public void DisplayVideo()
     {
         Console.WriteLine(CreateVideoString());
@@ -26,7 +25,6 @@ class Video
         Console.WriteLine($"Number of comments: {_comments.Count()}");
         GetComments();
     }
-
     public void GetComments()
     {
         int count = 1;

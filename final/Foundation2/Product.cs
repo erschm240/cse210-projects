@@ -18,7 +18,6 @@ class Product
     {
         return _pName;
     }
-
     public int GetId()
     {
         return _id;
